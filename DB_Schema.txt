@@ -1,0 +1,58 @@
+DB Schema of NPC Id Card App:
+------------------------------------
+
+students
+-----------
+
+id (pk) (int)
+name (string) (varchar)
+roll (int)
+reg (int)
+department_id(int)
+photo (text/varchar)
+semester_id(int)
+session (string) (varchar)
+mobile_no (string) (varchar)
+blood_group (string) (varchar)
+address (text)
+emr_contact_no (string) (varchar)
+status (string) (varchar)
+
+departments
+---------------
+id - pk(int)
+name (string) (varchar)
+
+semesters
+-----------
+id (pk) (int)
+title (string) (varchar)
+
+users
+------
+id (pk) (int)
+name (string) (varchar)
+email (email)
+mobile_no (string) (varchar)
+password (string) (varchar)
+role (string) (varchar)
+status (string) (varchar)
+
+idcards
+--------
+id (pk) (int)
+date (date)
+time (time) 
+student_id
+status
+
+
+
+
+
+
+
+
+
+
+
