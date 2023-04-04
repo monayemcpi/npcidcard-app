@@ -25,6 +25,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('/dashboard','DashboardController');
     
     Route::resource('/department','DepartmentController');
+    
+    Route::resource('/users','UserController');
 
 });
 
