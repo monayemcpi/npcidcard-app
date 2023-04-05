@@ -26,6 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        $debug = 123;
         return view('admin.users.create');
     }
 
@@ -71,7 +72,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+       $data = User::find($id) ;
+       return view('admin.users.edit',compact('data'));
     }
 
     /**
@@ -83,7 +85,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $user = User::find($id) ;
+
+       $user->name = $request->input('name') ;
+       $user->email = $request->input('email') ;
+       $user->password = $request->input('password') ;
+       $user->mobile_no = $request->input('mobile_no') ;
+       $user->status = $request->input('status') ;
+
+       $res = $user->update(); 
+
+       if($res)
+           return redirect('admin/users') ;
     }
 
     /**
@@ -94,6 +107,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $user = User::find($id) ;
+       $res = $user->delete();
+       if($res)
+        return redirect('admin/users') ;
+        
     }
 }

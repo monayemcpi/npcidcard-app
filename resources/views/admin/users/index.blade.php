@@ -21,14 +21,18 @@
                     <td>Email</td>
                     <td>Action</td>
                 </tr>
+                @php $sl=1; @endphp
                 @foreach($data as $row)
                 <tr>
-                    <td>1</td>
+                    <td>{{$sl++}}</td>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }}</td>
                     <td>
-                        <a href="">Edit</a>
-                        <a href="">Delete</a>
+                        <a href="{{ route('users.edit',$row->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                        <form action="{{ route('users.destroy',$row->id) }}" method="POST" style="display:inline;">
+                            {{ method_field('DELETE') }} {{ csrf_field() }}
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
